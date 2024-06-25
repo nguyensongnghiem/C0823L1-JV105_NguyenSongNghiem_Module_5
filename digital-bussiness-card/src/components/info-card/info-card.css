@@ -1,0 +1,10 @@
+.info-card {
+   background-color: #1A1B21;
+   color: #fff;
+   width: 350px;
+   margin : 20px auto;
+   border: none;
+   border-radius: 20px;
+   box-shadow: 10px 5px 5px rgb(213, 206, 206);
+   overflow: hidden
+}

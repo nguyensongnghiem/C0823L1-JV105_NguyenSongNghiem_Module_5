@@ -1,0 +1,16 @@
+.interests  {
+    text-align: start;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font: 16px;
+    padding: 0;
+}
+.detail {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    text-align:justify;
+    font-size: 11px;
+}

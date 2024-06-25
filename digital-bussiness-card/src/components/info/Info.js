@@ -1,5 +1,6 @@
 import React from 'react'
 import './info.css'
+import { BsEnvelope } from "react-icons/bs";
 function Info({info}) {
   return (
     <>
@@ -8,11 +9,12 @@ function Info({info}) {
         <h3 className='name'>{info.infoName}</h3>
         <p className='position'>{info.infoPosition}</p>
         <div className='buttons'>
-            <button>
+            <button className='btn btn-email'>
+           
                 Email
             </button>
-            <button>
-                Linked
+            <button className='btn btn-linkedln'>           
+                LinkedIn
             </button>
         </div>
     </div>

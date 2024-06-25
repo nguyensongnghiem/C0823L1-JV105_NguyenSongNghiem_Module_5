@@ -1,15 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-
-import InfoCard from './components/info-card/inforCard';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 
 function App() {
-
-  
-
   return (
     <div className="App">
-     <InfoCard></InfoCard>
+      <Navbar></Navbar>
+      <Hero></Hero>
     </div>
   );
 }
