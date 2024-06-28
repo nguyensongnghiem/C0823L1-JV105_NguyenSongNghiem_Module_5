@@ -1,5 +1,4 @@
 import React from "react";
-const moment = require('moment-timezone');
 function Card(props) {
   return (
     <div className="card">
@@ -12,7 +11,7 @@ function Card(props) {
         </div>
         <h1 className="card--title">{props.item.title}</h1>
         <p className="card--date">
-          {moment. props.item.startDate} - {props.item.stopDate}
+          {props.item.startDate} - {props.item.stopDate}
         </p>
         <p className="card--description">{props.item.description}</p>
       </div>
