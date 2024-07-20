@@ -1,0 +1,50 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "HaiTT",
+      "address": "Quảng nam3",
+      "point": 9
+    },
+    {
+      "id": "2",
+      "name": "HaiTT2",
+      "address": "Quảng nam2",
+      "point": 5
+    },
+    {
+      "id": "3",
+      "name": "HaiTTABC",
+      "address": "Đà nẵng",
+      "point": 9
+    },
+    {
+      "id": "1d5b",
+      "name": "TriAbc",
+      "address": "Quảng Nam Đà Nẵng",
+      "point": 9
+    },
+    {
+      "id": "3b7f",
+      "name": "HaiTTABCDE",
+      "address": "Đà nẵng",
+      "point": 9
+    },
+    {
+      "id": "8b1d",
+      "name": "TriABC",
+      "address": "295 Nguyen Tat Thanh",
+      "point": 8
+    }
+  ],
+  "classrooms": [
+    {
+      "id": "1",
+      "name": "C0823L1"
+    },
+    {
+      "id": "2",
+      "name": "C1023L1"
+    }
+  ]
+}
