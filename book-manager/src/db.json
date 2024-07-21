@@ -1,53 +1,74 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Harry Porter",
-      "author": "abc",
-      "publishedDate": "01/01/2015",
-      "quantity": 100
+      "id": 7,
+      "title": "Những người khốn khổ",
+      "author": "Victor Hugo",
+      "publishedDate": "2024-07-03",
+      "quantity": 123
     },
     {
-      "id": 2,
-      "title": "7 viên ngọc rồng",
-      "author": "kádadjf",
-      "publishedDate": "12/02/2013",
-      "quantity": 35
+      "id": 8,
+      "title": "Bố Già 2",
+      "author": "Mario Puzo",
+      "publishedDate": "2024-07-02",
+      "quantity": 6542
     },
     {
-      "id": 3,
-      "title": "Naruto",
-      "author": "2314",
-      "publishedDate": "01/01/1995",
-      "quantity": 1000
+      "id": 9,
+      "title": "Ninja loạn thị 2",
+      "author": "klasjasdhf",
+      "publishedDate": "2024-07-02",
+      "quantity": 124312
     },
     {
-      "id": 4,
-      "title": "Doremon",
-      "author": "aưedfsdfgbc",
-      "publishedDate": "01/01/1990",
-      "quantity": 324
+      "id": 10,
+      "title": "Đảo giấu vàng",
+      "author": "Henry",
+      "publishedDate": "2024-07-09",
+      "quantity": 124125435
     },
     {
-      "id": 5,
-      "title": "sdfdfsgdfsg",
-      "author": "ádfadsf",
-      "publishedDate": "2024/12/02",
-      "quantity": 1223
+      "id": 11,
+      "title": "Romeo và Juliet",
+      "author": "Shakesperes",
+      "publishedDate": "2024-07-16",
+      "quantity": 234321
     },
     {
-      "id": 6,
-      "title": "sdfgsdf",
-      "author": "sadfdag",
+      "id": 12,
+      "title": "Jindo Dinho",
+      "author": "2Heklasd",
+      "publishedDate": "2024-07-02",
+      "quantity": 123
+    },
+    {
+      "id": 13,
+      "title": "Bố Già 3",
+      "author": "ádfa",
       "publishedDate": "2024-07-25",
       "quantity": 123
     },
     {
-      "id": 7,
-      "title": "dđfbs",
-      "author": "sdgdsg",
-      "publishedDate": "2024-07-19",
-      "quantity": 2342
+      "id": 14,
+      "title": "Tắt đèn",
+      "author": "Ngô  Tất Tố",
+      "publishedDate": "2024-07-01",
+      "quantity": 23
+    },
+    {
+      "id": 15,
+      "title": "Dấu ấn rồng thiêng",
+      "author": "dsdsagf",
+      "publishedDate": "2024-07-10",
+      "quantity": 123
+    },
+    {
+      "id": 16,
+      "title": "Naruto",
+      "author": "ádfasdf",
+      "publishedDate": "2024-07-04",
+      "quantity": 123124
     }
   ]
 }

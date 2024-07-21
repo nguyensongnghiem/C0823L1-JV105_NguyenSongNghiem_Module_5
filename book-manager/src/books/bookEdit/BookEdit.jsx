@@ -1,18 +1,31 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { updateBook } from "../../services/bookService.jsx";
+import { getBook } from "../../services/bookService";
 import { toast } from "react-toastify";
-import { saveBook } from "../../services/bookService";
-function BookCreate() {
+import { ErrorMessage, Field, Form, Formik } from "formik";
+
+const BookEdit = () => {
+  const { editBookId } = useParams();
+  const [initBook, setInitBook] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const initBook = {
-    id: "",
-    title: "",
-    author: "",
-    publishedDate: "",
-    quantity: "",
+  useEffect(() => {
+    getBookById(editBookId);
+  }, []);
+  const getBookById = async (id) => {
+    const book = await getBook(id);
+    setInitBook({ ...book });
+    setIsLoading(false);
   };
+  // const initBook = {
+  //     id : "",
+  //     title: "",
+  //     author: "",
+  //     publishedDate: "",
+  //     quantity: "",
+  // };
   const validate = {
     title: Yup.string().required("Tên sách không để trống"),
     author: Yup.string().required("Tên tác giả không để trống"),
@@ -23,16 +36,18 @@ function BookCreate() {
       .required("Không để trống")
       .min(1, "Số lượng phải lớn hơn 0"),
   };
-
   const handleSubmit = async (value) => {
+    console.log("Sau khi sửa" + value);
     value.quantity = +value.quantity;
-    await saveBook(value);
-    toast.success("Thêm mới thành công");
+    await updateBook(value);
+    toast.success("cập nhật thành công");
     navigate("/books");
   };
+
+  if (isLoading) return <p>Loading...</p>;
   return (
-    <>
-      <h2>Thêm mới sách</h2>
+    <div>
+      <h2>Sửa sách</h2>
       <Formik
         onSubmit={handleSubmit}
         initialValues={initBook}
@@ -40,6 +55,7 @@ function BookCreate() {
       >
         <div className="card p-2 shadow-sm w-25">
           <Form>
+            <Field name="id" className="form-control" type="hidden"></Field>
             <div className="form-group">
               <label className="form-label fw-bold">Tên sách</label>
               <Field name="title" className="form-control"></Field>
@@ -65,7 +81,7 @@ function BookCreate() {
               className="text-danger"
               name="publishedDate"
               component="span"
-            ></ErrorMessage>{" "}
+            ></ErrorMessage>
             <br></br>
             <label className="form-label fw-bold">Số lượng</label>
             <Field name="quantity" className="form-control"></Field>
@@ -76,13 +92,13 @@ function BookCreate() {
             ></ErrorMessage>{" "}
             <br></br>
             <button type="submit" className="btn btn-warning">
-              Thêm mới{" "}
+              Cập nhật
             </button>
           </Form>
         </div>
       </Formik>
-    </>
+    </div>
   );
-}
+};
 
-export default BookCreate;
+export default BookEdit;
