@@ -54,9 +54,9 @@ export const updateBook = async (book) => {
 
 export const searchBooks = async (searchInfo) => {
   try {
-    console.log(searchInfo);
+    // console.log(searchInfo);
     let response = await axios.get(
-      `http://localhost:3000/books?title_like=${searchInfo.title}`,
+      `http://localhost:3000/books?title_like=${searchInfo.title}&category.id_like=${searchInfo.category}`,
     );
     let startDate, stopDate;
     if (searchInfo.startDate === "" && searchInfo.stopDate === "")

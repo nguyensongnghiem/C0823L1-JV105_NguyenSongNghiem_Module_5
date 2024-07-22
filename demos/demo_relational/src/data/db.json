@@ -1,0 +1,24 @@
+{
+  "students": [
+    {
+      "id": "b827",
+      "name": "Tri",
+      "address": "Đà nẵng",
+      "point": 9,
+      "classroom": {
+        "id": "2",
+        "name": "C1023L1"
+      }
+    }
+  ],
+  "classrooms": [
+    {
+      "id": "1",
+      "name": "C0823L1"
+    },
+    {
+      "id": "2",
+      "name": "C1023L1"
+    }
+  ]
+}

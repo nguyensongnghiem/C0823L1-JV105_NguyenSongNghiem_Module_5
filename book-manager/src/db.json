@@ -5,70 +5,135 @@
       "title": "Những người khốn khổ",
       "author": "Victor Hugo",
       "publishedDate": "2024-07-03",
-      "quantity": 123
+      "quantity": 123,
+      "category": {
+        "id": 1,
+        "name": "Kinh dị"
+      }
     },
     {
       "id": 8,
       "title": "Bố Già 2",
       "author": "Mario Puzo",
       "publishedDate": "2024-07-02",
-      "quantity": 6542
+      "quantity": 6542,
+      "category": {
+        "id": 3,
+        "name": "Viễn tưởng"
+      }
     },
     {
       "id": 9,
       "title": "Ninja loạn thị 2",
       "author": "klasjasdhf",
       "publishedDate": "2024-07-02",
-      "quantity": 124312
+      "quantity": 124312,
+      "category": {
+        "id": 3,
+        "name": "Viễn tưởng"
+      }
     },
     {
       "id": 10,
       "title": "Đảo giấu vàng",
       "author": "Henry",
       "publishedDate": "2024-07-09",
-      "quantity": 124125435
+      "quantity": 124125435,
+      "category": {
+        "id": 3,
+        "name": "Viễn tưởng"
+      }
     },
     {
       "id": 11,
       "title": "Romeo và Juliet",
       "author": "Shakesperes",
       "publishedDate": "2024-07-16",
-      "quantity": 234321
+      "quantity": 234321,
+      "category": {
+        "id": 3,
+        "name": "Viễn tưởng"
+      }
     },
     {
       "id": 12,
       "title": "Jindo Dinho",
       "author": "2Heklasd",
       "publishedDate": "2024-07-02",
-      "quantity": 123
+      "quantity": 123,
+      "category": {
+        "id": 2,
+        "name": "Trinh thám"
+      }
     },
     {
       "id": 13,
       "title": "Bố Già 3",
       "author": "ádfa",
       "publishedDate": "2024-07-25",
-      "quantity": 123
+      "quantity": 123,
+      "category": {
+        "id": 2,
+        "name": "Trinh thám"
+      }
     },
     {
       "id": 14,
       "title": "Tắt đèn",
       "author": "Ngô  Tất Tố",
       "publishedDate": "2024-07-01",
-      "quantity": 23
+      "quantity": 23,
+      "category": {
+        "id": 3,
+        "name": "Viễn tưởng"
+      }
     },
     {
       "id": 15,
       "title": "Dấu ấn rồng thiêng",
       "author": "dsdsagf",
       "publishedDate": "2024-07-10",
-      "quantity": 123
+      "quantity": 123,
+      "category": {
+        "id": 2,
+        "name": "Trinh thám"
+      }
     },
     {
       "id": 16,
       "title": "Naruto",
       "author": "ádfasdf",
       "publishedDate": "2024-07-04",
-      "quantity": 123124
+      "quantity": 123124,
+      "category": {
+        "id": 1,
+        "name": "Kinh dị"
+      }
+    },
+    {
+      "id": 17,
+      "title": "adfdsg",
+      "author": "àd",
+      "category": {
+        "id": 2,
+        "name": "Trinh thám"
+      },
+      "publishedDate": "2024-07-16",
+      "quantity": 214
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Kinh dị"
+    },
+    {
+      "id": 2,
+      "name": "Trinh thám"
+    },
+    {
+      "id": 3,
+      "name": "Viễn tưởng"
     }
   ]
 }

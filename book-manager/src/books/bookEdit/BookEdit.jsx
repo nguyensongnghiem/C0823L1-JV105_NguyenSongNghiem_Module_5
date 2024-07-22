@@ -5,27 +5,32 @@ import { updateBook } from "../../services/bookService.jsx";
 import { getBook } from "../../services/bookService";
 import { toast } from "react-toastify";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import {getCategories} from "../../services/categoryService.jsx";
 
 const BookEdit = () => {
   const { editBookId } = useParams();
+  const [categories, setCategories] = useState([]);
   const [initBook, setInitBook] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     getBookById(editBookId);
   }, []);
+  useEffect(() => {
+    getAllCategory()
+  }, []);
+  const getAllCategory = async () => {
+    const fetchedData = await getCategories();
+    console.log(fetchedData);
+    setCategories(fetchedData)
+  }
+
   const getBookById = async (id) => {
     const book = await getBook(id);
-    setInitBook({ ...book });
+    setInitBook({ ...book, category: JSON.stringify(book.category) });
     setIsLoading(false);
   };
-  // const initBook = {
-  //     id : "",
-  //     title: "",
-  //     author: "",
-  //     publishedDate: "",
-  //     quantity: "",
-  // };
+
   const validate = {
     title: Yup.string().required("Tên sách không để trống"),
     author: Yup.string().required("Tên tác giả không để trống"),
@@ -60,35 +65,42 @@ const BookEdit = () => {
               <label className="form-label fw-bold">Tên sách</label>
               <Field name="title" className="form-control"></Field>
               <ErrorMessage
-                className="text-danger"
-                name="title"
-                component="span"
+                  className="text-danger"
+                  name="title"
+                  component="span"
               ></ErrorMessage>{" "}
               <br></br>
             </div>
             <label className="form-label fw-bold">Tên tác giả</label>
             <Field name="author" className="form-control"></Field>
             <ErrorMessage
-              className="text-danger"
-              name="author"
-              component="span"
+                className="text-danger"
+                name="author"
+                component="span"
             ></ErrorMessage>{" "}
             <br></br>
+            <br></br>
+            <label className="form-label fw-bold mx-2"> Danh mục </label>
+            <Field name="category"  as="select">
+              {categories.map((cat) => {
+                return <option key={cat.id} value={JSON.stringify(cat)}>{cat.name}</option>
+              })}
+            </Field>
             <label className="form-label fw-bold">Ngày xuất bản</label>
             <Field name="publishedDate" className="" type="date"></Field>{" "}
             <br></br>
             <ErrorMessage
-              className="text-danger"
-              name="publishedDate"
-              component="span"
+                className="text-danger"
+                name="publishedDate"
+                component="span"
             ></ErrorMessage>
             <br></br>
             <label className="form-label fw-bold">Số lượng</label>
             <Field name="quantity" className="form-control"></Field>
             <ErrorMessage
-              className="text-danger"
-              name="quantity"
-              component="span"
+                className="text-danger"
+                name="quantity"
+                component="span"
             ></ErrorMessage>{" "}
             <br></br>
             <button type="submit" className="btn btn-warning">

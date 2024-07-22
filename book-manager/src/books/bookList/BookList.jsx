@@ -1,20 +1,32 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as bookService from "../../services/bookService";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
 import { Field, Form, Formik } from "formik";
+import {getCategories} from "../../services/categoryService.jsx";
+import moment from "moment";
 
 function BookList() {
   const [books, setBooks] = useState([]);
+  const [categories, setCategories] = useState([]);
+
   const [isShowModal, setIsShowModal] = useState(false);
   const [idToDelete, setIdToDelete] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    getBookData();
+    getAllCategory()
   }, []);
 
+  useEffect(() => {
+    getBookData();
+  }, []);
+  const getAllCategory = async () => {
+    const fetchedData = await getCategories();
+    console.log(fetchedData);
+    setCategories(fetchedData)
+  }
   const getBookData = async () => {
     const fetchData = await bookService.getBooks();
     setBooks(fetchData);
@@ -41,6 +53,7 @@ function BookList() {
     toast.success("Đã xóa thành công !");
   };
   const onSearchSubmit = (value) => {
+    console.log(value)
     searchBookData(value);
   };
   const list = books.map((book) => {
@@ -48,7 +61,8 @@ function BookList() {
       <tr key={book.id}>
         <td>{book.title}</td>
         <td>{book.author}</td>
-        <td>{book.publishedDate}</td>
+        <td>{book.category.name}</td>
+        <td>{moment(book.publishedDate).format("DD/MM/YYYY")}</td>
         <td>{book.quantity}</td>
         <td>
           <button
@@ -76,7 +90,7 @@ function BookList() {
         Thêm mới
       </Link>
       <Formik
-        initialValues={{ title: "", startDate: "", stopDate: "" }}
+        initialValues={{ title: "", startDate: "", stopDate: "", category:""}}
         onSubmit={onSearchSubmit}
       >
         <Form>
@@ -85,13 +99,20 @@ function BookList() {
             <Field name="title" className="form-control"></Field>
             <label className="fw-bold">Ngày bắt đầu</label>
             <Field
-              name="startDate"
-              type="date"
-              className="form-control"
+                name="startDate"
+                type="date"
+                className="form-control"
             ></Field>
             <label className="fw-bold">Ngày kết thúc</label>
             <Field name="stopDate" type="date" className="form-control"></Field>
-
+            <label className="fw-bold me-2">Danh mục </label>
+            <Field name="category" as="select">
+              <option value="">- Tìm tất cả -</option>
+              {categories.map((cat) => {
+                return <option key={cat.id} value={cat.id}>{cat.name}</option>
+              })}
+            </Field>
+            <br></br>
             <button type="submit" className="btn btn-primary m-3">
               Tìm
             </button>
@@ -101,14 +122,15 @@ function BookList() {
 
       <table className="table shadow-sm">
         <thead className="table-primary">
-          <tr>
-            <th>Tên sách</th>
-            <th>Tên tác giả</th>
-            <th>Ngày xuất bản</th>
-            <th>Số lượng</th>
-            <th>Sửa</th>
-            <th>Xóa</th>
-          </tr>
+        <tr>
+          <th>Tên sách</th>
+          <th>Tên tác giả</th>
+          <th>Danh mục</th>
+          <th>Ngày xuất bản</th>
+          <th>Số lượng</th>
+          <th>Sửa</th>
+          <th>Xóa</th>
+        </tr>
         </thead>
         <tbody>{list}</tbody>
       </table>
