@@ -12,22 +12,11 @@
       }
     },
     {
-      "id": 8,
-      "title": "Bố Già 2",
-      "author": "Mario Puzo",
-      "publishedDate": "2024-07-02",
-      "quantity": 6542,
-      "category": {
-        "id": 3,
-        "name": "Viễn tưởng"
-      }
-    },
-    {
       "id": 9,
-      "title": "Ninja loạn thị 2",
-      "author": "klasjasdhf",
+      "title": "Ninja loạn thị 3",
+      "author": "Ninja go",
       "publishedDate": "2024-07-02",
-      "quantity": 124312,
+      "quantity": 5442,
       "category": {
         "id": 3,
         "name": "Viễn tưởng"
@@ -111,15 +100,26 @@
       }
     },
     {
-      "id": 17,
-      "title": "adfdsg",
-      "author": "àd",
+      "id": 18,
+      "title": "Jack bác sĩ quái dị",
+      "author": "Tezo",
       "category": {
-        "id": 2,
-        "name": "Trinh thám"
+        "id": 3,
+        "name": "Viễn tưởng"
       },
       "publishedDate": "2024-07-16",
-      "quantity": 214
+      "quantity": 123124
+    },
+    {
+      "id": 19,
+      "title": "Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "category": {
+        "id": 1,
+        "name": "Kinh dị"
+      },
+      "publishedDate": "2024-07-16",
+      "quantity": 233
     }
   ],
   "categories": [

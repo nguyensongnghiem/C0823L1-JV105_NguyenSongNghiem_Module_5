@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { updateBook } from "../../services/bookService.jsx";
 import { getBook } from "../../services/bookService";
 import { toast } from "react-toastify";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import {getCategories} from "../../services/categoryService.jsx";
+import { getCategories } from "../../services/categoryService.jsx";
 
 const BookEdit = () => {
   const { editBookId } = useParams();
@@ -17,13 +17,13 @@ const BookEdit = () => {
     getBookById(editBookId);
   }, []);
   useEffect(() => {
-    getAllCategory()
+    getAllCategory();
   }, []);
   const getAllCategory = async () => {
     const fetchedData = await getCategories();
     console.log(fetchedData);
-    setCategories(fetchedData)
-  }
+    setCategories(fetchedData);
+  };
 
   const getBookById = async (id) => {
     const book = await getBook(id);
@@ -39,11 +39,13 @@ const BookEdit = () => {
       .max(new Date(), "Không được sau ngày hiện tại"),
     quantity: Yup.number()
       .required("Không để trống")
-      .min(1, "Số lượng phải lớn hơn 0"),
+      .min(1, "Số lượng phải lớn hơn 0")
+      .typeError("Yêu cầu nhập số"),
   };
   const handleSubmit = async (value) => {
     console.log("Sau khi sửa" + value);
     value.quantity = +value.quantity;
+    value.category = JSON.parse(value.category);
     await updateBook(value);
     toast.success("cập nhật thành công");
     navigate("/books");
@@ -53,62 +55,74 @@ const BookEdit = () => {
   return (
     <div>
       <h2>Sửa sách</h2>
-      <Formik
-        onSubmit={handleSubmit}
-        initialValues={initBook}
-        validationSchema={Yup.object(validate)}
-      >
-        <div className="card p-2 shadow-sm w-25">
-          <Form>
-            <Field name="id" className="form-control" type="hidden"></Field>
-            <div className="form-group">
-              <label className="form-label fw-bold">Tên sách</label>
-              <Field name="title" className="form-control"></Field>
-              <ErrorMessage
+      <div className="d-flex justify-content-start align-items-start vh-100">
+        <Formik
+          onSubmit={handleSubmit}
+          initialValues={initBook}
+          validationSchema={Yup.object(validate)}
+        >
+          <div className="card p-4 shadow-sm w-50">
+            <Form>
+              <Field name="id" className="form-control" type="hidden"></Field>
+              <div className="form-group">
+                <label className="form-label fw-bold">Tên sách</label>
+                <Field name="title" className="form-control"></Field>
+                <ErrorMessage
                   className="text-danger"
                   name="title"
-                  component="span"
-              ></ErrorMessage>{" "}
-              <br></br>
-            </div>
-            <label className="form-label fw-bold">Tên tác giả</label>
-            <Field name="author" className="form-control"></Field>
-            <ErrorMessage
-                className="text-danger"
-                name="author"
-                component="span"
-            ></ErrorMessage>{" "}
-            <br></br>
-            <br></br>
-            <label className="form-label fw-bold mx-2"> Danh mục </label>
-            <Field name="category"  as="select">
-              {categories.map((cat) => {
-                return <option key={cat.id} value={JSON.stringify(cat)}>{cat.name}</option>
-              })}
-            </Field>
-            <label className="form-label fw-bold">Ngày xuất bản</label>
-            <Field name="publishedDate" className="" type="date"></Field>{" "}
-            <br></br>
-            <ErrorMessage
-                className="text-danger"
-                name="publishedDate"
-                component="span"
-            ></ErrorMessage>
-            <br></br>
-            <label className="form-label fw-bold">Số lượng</label>
-            <Field name="quantity" className="form-control"></Field>
-            <ErrorMessage
-                className="text-danger"
-                name="quantity"
-                component="span"
-            ></ErrorMessage>{" "}
-            <br></br>
-            <button type="submit" className="btn btn-warning">
-              Cập nhật
-            </button>
-          </Form>
-        </div>
-      </Formik>
+                  component="div"
+                ></ErrorMessage>
+              </div>
+              <div className="form-group">
+                <label className="form-label fw-bold">Tên tác giả</label>
+                <Field name="author" className="form-control"></Field>
+                <ErrorMessage
+                  className="text-danger"
+                  name="author"
+                  component="div"
+                ></ErrorMessage>
+              </div>
+              <div className="form-group">
+                <label className="form-label fw-bold"> Danh mục </label>
+                <Field name="category" as="select" className="form-select">
+                  {categories.map((cat) => {
+                    return (
+                      <option key={cat.id} value={JSON.stringify(cat)}>
+                        {cat.name}
+                      </option>
+                    );
+                  })}
+                </Field>
+              </div>
+              <div className="form-group">
+                <label className="form-label fw-bold">Ngày xuất bản</label>
+                <Field
+                  name="publishedDate"
+                  className="form-control"
+                  type="date"
+                ></Field>
+                <ErrorMessage
+                  className="text-danger"
+                  name="publishedDate"
+                  component="div"
+                ></ErrorMessage>
+              </div>
+              <div className="form-group">
+                <label className="form-label fw-bold">Số lượng</label>
+                <Field name="quantity" className="form-control"></Field>
+                <ErrorMessage
+                  className="text-danger"
+                  name="quantity"
+                  component="div"
+                ></ErrorMessage>
+              </div>
+              <button type="submit" className="btn btn-warning my-3 ">
+                Cập nhật
+              </button>
+            </Form>
+          </div>
+        </Formik>
+      </div>
     </div>
   );
 };

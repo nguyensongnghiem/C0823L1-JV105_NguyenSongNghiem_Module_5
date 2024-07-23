@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { BrowserRouter, NavLink, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import BookList from "./books/bookList/BookList";
 import "bootstrap/dist/css/bootstrap.min.css";
